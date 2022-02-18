@@ -21,7 +21,7 @@ public class CommandRSP extends BaseCommand {
     @Default
     @Subcommand("help|h")
     public void _main(CommandSender player) {
-        Chat.msg(player, "&8[&3RandomSpawnPlus&8] &7Running &bv" + plugin.getDescription().getVersion() + "&7, made with love &a:^)");
+        Chat.msg(player, "  &3&lRandomSpawnPlus &7By OpenCommunity Original &bv" + plugin.getDescription().getVersion() + "&7, made with love &a:^)");
         Chat.msg(player, "");
         Chat.msg(player, "&b/rsp &8- &7The help menu.");
         Chat.msg(player, "&b/rsp reload &8- &7Reload the plugin configuration.");
@@ -36,6 +36,6 @@ public class CommandRSP extends BaseCommand {
         plugin.getLangManager().reload();
         plugin.getSpawnsManager().reload();
         Chat.setLang(plugin.getLangManager().getConfig());
-        Chat.msg(player, "&8[&3RandomSpawnPlus&8] &7Reloaded.");
+        Chat.msg(player, "  &3&lRandomSpawnPlus &7Reloaded.");
     }
 }

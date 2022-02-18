@@ -242,8 +242,8 @@ public class SpawnFinder {
     }
 
     public int getHighestY(World world, int x, int z) {
-        int i = 255;
-        while (i > 0) {
+        int i = 320;
+        while (i > -64) {
             if (!Blocks.isEmpty(new Location(world, x, i, z).getBlock())) {
                 if (config.getBoolean("debug-mode"))
                     plugin.getLogger().info(Integer.toString(i));
