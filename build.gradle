@@ -55,6 +55,8 @@ dependencies {
 
 shadowJar {
     relocate 'co.aikar.commands', 'systems.kscott.randomspawnplus3.acf'
+    relocate "io.papermc.lib", "systems.kscott.randomspawnplus3.paperlib"
+    relocate 'co.aikar.locales', 'systems.kscott.randomspawnplus3.locales'
 }
 
 
