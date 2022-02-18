@@ -27,7 +27,7 @@ public class Locations {
         int y = location.getBlockY();
         int z = location.getBlockZ();
 
-        return world+"|"+x+"|"+y+"|"+z;
+        return world + "|" + x + "|" + y + "|" + z;
     }
 
     public static List<Location> deserializeLocationStringList(List<String> locStrings) {

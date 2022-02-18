@@ -1,9 +1,3 @@
-#############################
-#      RandomSpawnPlus      #
-#       Version 3.0.0       #
-#        by @89apt89        #
-#############################
-
 must-be-player: "&c[!] &7You must be a player to execute this command."
 
 # Placeholders: %x | %y | %z

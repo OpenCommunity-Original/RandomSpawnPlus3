@@ -1,5 +1,11 @@
-# Project exclude paths
-/target/
-
+target/
+.project
+.classpath
+.settings
 .idea
-RandomSpawnPlus3.iml
+.vscode
+.gradle
+bin/
+build/
+old/
+gradle/

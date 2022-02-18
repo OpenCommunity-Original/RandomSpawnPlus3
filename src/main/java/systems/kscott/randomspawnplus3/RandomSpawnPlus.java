@@ -37,6 +37,10 @@ public final class RandomSpawnPlus extends JavaPlugin {
     @Getter
     private LuckPerms luckPerms;
 
+    public static RandomSpawnPlus getInstance() {
+        return INSTANCE;
+    }
+
     @Override
     public void onEnable() {
 
@@ -84,7 +88,6 @@ public final class RandomSpawnPlus extends JavaPlugin {
         SpawnCacher.getInstance().save();
     }
 
-
     public void registerEvents() {
         getServer().getPluginManager().registerEvents(new RSPDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new RSPLoginListener(this), this);
@@ -97,10 +100,6 @@ public final class RandomSpawnPlus extends JavaPlugin {
         if (configManager.getConfig().getBoolean("wild-enabled")) {
             manager.registerCommand(new CommandWild(this));
         }
-    }
-
-    public static RandomSpawnPlus getInstance() {
-        return INSTANCE;
     }
 
     public IEssentials getEssentials() {

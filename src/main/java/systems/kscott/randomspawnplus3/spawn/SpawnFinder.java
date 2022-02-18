@@ -20,20 +20,9 @@ import java.util.Random;
 public class SpawnFinder {
 
     public static SpawnFinder INSTANCE;
-
-    public static void initialize(RandomSpawnPlus plugin) {
-        INSTANCE = new SpawnFinder(plugin);
-    }
-
-    public static SpawnFinder getInstance() {
-        return INSTANCE;
-    }
-
-    ArrayList<Material> safeBlocks;
-
     public RandomSpawnPlus plugin;
-
     public FileConfiguration config;
+    ArrayList<Material> safeBlocks;
 
     public SpawnFinder(RandomSpawnPlus plugin) {
         this.plugin = plugin;
@@ -53,13 +42,21 @@ public class SpawnFinder {
         safeBlocks.add(XMaterial.CAVE_AIR.parseMaterial());
     }
 
+    public static void initialize(RandomSpawnPlus plugin) {
+        INSTANCE = new SpawnFinder(plugin);
+    }
+
+    public static SpawnFinder getInstance() {
+        return INSTANCE;
+    }
+
     public Location getCandidateLocation() {
         String worldString = config.getString("respawn-world");
 
         World world = Bukkit.getWorld(worldString);
 
         if (world == null) {
-            plugin.getLogger().severe("The world '"+worldString+"' is invalid. Please change the 'respawn-world' key in the config.");
+            plugin.getLogger().severe("The world '" + worldString + "' is invalid. Please change the 'respawn-world' key in the config.");
             plugin.getServer().getPluginManager().disablePlugin(plugin);
         }
 
@@ -77,7 +74,7 @@ public class SpawnFinder {
             SpawnRegion region1 = new SpawnRegion(minX, minXblocked, minZ, minZblocked);
             SpawnRegion region2 = new SpawnRegion(minXblocked, maxXblocked, minZblocked, maxZ - maxZblocked);
             SpawnRegion region3 = new SpawnRegion(maxXblocked, maxX, maxZblocked, maxX);
-            SpawnRegion region4 = new SpawnRegion(minZblocked, maxZ-minZblocked, minZ + minXblocked, maxZ - minZblocked);
+            SpawnRegion region4 = new SpawnRegion(minZblocked, maxZ - minZblocked, minZ + minXblocked, maxZ - minZblocked);
 
             SpawnRegion[] spawnRegions = new SpawnRegion[]{region1, region2, region3, region4};
 
@@ -143,7 +140,7 @@ public class SpawnFinder {
             plugin.getLogger().info(locClone.getBlock().getType().toString());
             plugin.getLogger().info(locClone.add(0, 1, 0).getBlock().getType().toString());
             plugin.getLogger().info(locClone.add(0, 1, 0).getBlock().getType().toString());
-            plugin.getLogger().info("Spawned at "+location.getBlockX()+", "+location.getBlockY()+", "+location.getBlockZ());
+            plugin.getLogger().info("Spawned at " + location.getBlockX() + ", " + location.getBlockY() + ", " + location.getBlockZ());
         }
         return location.add(0, 1, 0);
     }
@@ -190,7 +187,7 @@ public class SpawnFinder {
 
         if (!isValid) {
             if (debugMode)
-                plugin.getLogger().info("Invalid spawn: "+spawnCheckEvent.getValidReason());
+                plugin.getLogger().info("Invalid spawn: " + spawnCheckEvent.getValidReason());
         }
 
         if (blockedSpawnRange) {
@@ -218,7 +215,7 @@ public class SpawnFinder {
 
         if (!safeBlocks.contains(block1.getType())) {
             if (debugMode) {
-                plugin.getLogger().info("Invalid spawn: "+block1.getType().toString()+" is not a safe block!");
+                plugin.getLogger().info("Invalid spawn: " + block1.getType().toString() + " is not a safe block!");
             }
             isValid = false;
         }

@@ -8,26 +8,17 @@ import org.bukkit.scheduler.BukkitRunnable;
 import systems.kscott.randomspawnplus3.RandomSpawnPlus;
 import systems.kscott.randomspawnplus3.util.Locations;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 public class SpawnCacher {
 
     public static SpawnCacher INSTANCE;
-
-
-    public static void initialize(RandomSpawnPlus plugin) {
-        INSTANCE = new SpawnCacher(plugin);
-    }
-
-    public static SpawnCacher getInstance() {
-        return INSTANCE;
-    }
-
     private RandomSpawnPlus plugin;
-
     @Getter
     private boolean spawnsRequireSaving;
-
     @Getter
     private List<String> cachedSpawns;
 
@@ -37,6 +28,14 @@ public class SpawnCacher {
         this.cachedSpawns = new ArrayList<>();
         cacheSpawns();
         runWatchdog();
+    }
+
+    public static void initialize(RandomSpawnPlus plugin) {
+        INSTANCE = new SpawnCacher(plugin);
+    }
+
+    public static SpawnCacher getInstance() {
+        return INSTANCE;
     }
 
     private void cacheSpawns() {
@@ -59,7 +58,7 @@ public class SpawnCacher {
 
         List<String> newLocations = new ArrayList<>();
 
-        Bukkit.getLogger().info("Caching "+missingLocations+" spawns.");
+        Bukkit.getLogger().info("Caching " + missingLocations + " spawns.");
         for (int i = 0; i <= missingLocations; i++) {
             new BukkitRunnable() {
 
@@ -84,7 +83,7 @@ public class SpawnCacher {
                 /* Wait for all spawns to be cached */
                 if (newLocations.size() <= missingLocations) {
                     if (debugMode)
-                        Bukkit.getLogger().info(newLocations.size() +", "+ missingLocations);
+                        Bukkit.getLogger().info(newLocations.size() + ", " + missingLocations);
                 } else {
                     cachedSpawns.addAll(newLocations);
                     /* Save spawns to file */
@@ -101,7 +100,7 @@ public class SpawnCacher {
     }
 
     public void deleteSpawn(Location location) {
-        for (Iterator<String> iterator = cachedSpawns.iterator(); iterator.hasNext();) {
+        for (Iterator<String> iterator = cachedSpawns.iterator(); iterator.hasNext(); ) {
             String locationString = iterator.next();
             //Bukkit.getLogger().info(Locations.serializeString(location)+", "+locationString);
             if (Locations.serializeString(location).equals(locationString)) {

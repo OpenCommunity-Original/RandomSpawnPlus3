@@ -1,0 +1,70 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "7.1.1"
+    id 'java'
+}
+
+group 'org.opencommunity'
+version '1.0'
+jar.enabled = false;
+//sourceCompatibility = '17'
+//targetCompatibility = '17'
+
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
+    options.forkOptions.executable = 'javac'
+}
+
+repositories {
+    mavenLocal();
+    mavenCentral()
+    maven {
+        url = "https://papermc.io/repo/repository/maven-public/"
+    }
+    maven {
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        url = 'https://jitpack.io'
+    }
+    maven {
+        url = 'https://repo.aikar.co/content/groups/aikar/'
+    }
+    maven {
+        url = 'https://ci.ender.zone/plugin/repository/everything/'
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT'
+    compileOnly 'commons-io:commons-io:2.5'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'net.ess3:EssentialsX:2.17.0'
+    implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT"
+    implementation 'io.papermc:paperlib:1.0.2'
+    compileOnly 'net.luckperms:api:5.0'
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
+}
+
+shadowJar {
+    relocate 'co.aikar.commands', 'systems.kscott.randomspawnplus3.acf'
+}
+
+
+processResources {
+    filter { String line -> line.replace('${version}', project.version.toString()) }
+}
+
+shadowJar {
+    archiveFileName = 'RandomSpawnPlus3-' + project.version.toString() + '.jar';
+}
+
+artifacts {
+    shadowJar;
+}
+
+assemble.dependsOn(shadowJar);

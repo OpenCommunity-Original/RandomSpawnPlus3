@@ -1,11 +1,12 @@
 package systems.kscott.randomspawnplus3.commands;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.*;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Description;
 import com.earth2me.essentials.User;
 import io.papermc.lib.PaperLib;
-import net.luckperms.api.LuckPerms;
-import net.luckperms.api.node.Node;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
@@ -56,7 +57,7 @@ public class CommandWild extends BaseCommand {
 
 
             String message = plugin.getLang().getString("wild-tp-cooldown");
-            message = message.replace("%delay", Chat.timeLeft(cooldown/1000 - Instant.now().getEpochSecond()));
+            message = message.replace("%delay", Chat.timeLeft(cooldown / 1000 - Instant.now().getEpochSecond()));
 
             Chat.msg(player, message);
             return;

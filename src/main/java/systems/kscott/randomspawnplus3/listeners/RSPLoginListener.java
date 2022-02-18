@@ -11,14 +11,13 @@ import java.util.ArrayList;
 
 public class RSPLoginListener implements Listener {
 
+    public static ArrayList<String> firstJoinPlayers = new ArrayList<>();
     private FileConfiguration config;
+
 
     public RSPLoginListener(RandomSpawnPlus plugin) {
         this.config = plugin.getConfig();
     }
-
-
-    public static ArrayList<String> firstJoinPlayers = new ArrayList<>();
 
     @EventHandler
     public void preLoginHandler(AsyncPlayerPreLoginEvent event) {

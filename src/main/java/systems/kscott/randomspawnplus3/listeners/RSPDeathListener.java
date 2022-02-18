@@ -44,8 +44,8 @@ public class RSPDeathListener implements Listener {
                         try {
                             location = SpawnFinder.getInstance().findSpawn(true).add(0.5, 0, 0.5);
                         } catch (FinderTimedOutException e) {
-                                    plugin.getLogger().warning("The spawn finder failed to find a valid spawn, and has not given "+player.getName()+" a random spawn. If you find this happening a lot, then raise the 'spawn-finder-tries-before-timeout' key in the config.");
-                                    return;
+                            plugin.getLogger().warning("The spawn finder failed to find a valid spawn, and has not given " + player.getName() + " a random spawn. If you find this happening a lot, then raise the 'spawn-finder-tries-before-timeout' key in the config.");
+                            return;
                         }
 
                         RandomSpawnEvent randomSpawnEvent = new RandomSpawnEvent(location, player, SpawnType.ON_DEATH);

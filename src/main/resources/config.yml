@@ -118,7 +118,7 @@ spawn-finder-tries-before-timeout: 35
 #############
 
 # Note: changes to this variable will require a restart.
-wild-enabled: true
+wild-enabled: false
 
 # In seconds, how long between /wild uses?
 # Set to 0 to disable.
