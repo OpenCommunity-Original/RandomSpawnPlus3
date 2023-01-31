@@ -1,8 +1,8 @@
 name: RandomSpawnPlus
 version: ${version}
 main: systems.kscott.randomspawnplus3.RandomSpawnPlus
-api-version: 1.18
-softdepend: [Essentials, Factions, Vault, LuckPerms]
+api-version: 1.19
+softdepend: [Essentials, Vault, LuckPerms]
 authors: [89apt89, Envel]
 description: A comprehensive random spawning plugin for modern Minecraft versions.
 load: POSTWORLD
