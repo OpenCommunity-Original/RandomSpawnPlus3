@@ -18,7 +18,6 @@ import systems.kscott.randomspawnplus3.spawn.SpawnCacher;
 import systems.kscott.randomspawnplus3.spawn.SpawnFinder;
 import systems.kscott.randomspawnplus3.util.Chat;
 import systems.kscott.randomspawnplus3.util.ConfigFile;
-import systems.kscott.randomspawnplus3.util.Metrics;
 
 public final class RandomSpawnPlus extends JavaPlugin {
 
@@ -57,8 +56,6 @@ public final class RandomSpawnPlus extends JavaPlugin {
         SpawnCacher.initialize(this);
         Chat.initialize(this);
         INSTANCE = this;
-
-        new Metrics(this, 6465);
 
         if (getServer().getPluginManager().getPlugin("LuckPerms") != null) {
             /* LuckPerms is installed */
