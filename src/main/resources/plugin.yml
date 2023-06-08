@@ -1,7 +1,7 @@
 name: RandomSpawnPlus
 version: ${version}
 main: systems.kscott.randomspawnplus3.RandomSpawnPlus
-api-version: 1.19
+api-version: 1.20
 softdepend: [Essentials, Vault, LuckPerms]
 authors: [89apt89, Envel]
 description: A comprehensive random spawning plugin for modern Minecraft versions.
