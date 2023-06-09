@@ -6,7 +6,6 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Description;
 import com.earth2me.essentials.User;
-import io.papermc.lib.PaperLib;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
@@ -100,7 +99,7 @@ public class CommandWild extends BaseCommand {
         RandomSpawnEvent randomSpawnEvent = new RandomSpawnEvent(location, player, SpawnType.WILD_COMMAND);
 
         Bukkit.getServer().getPluginManager().callEvent(randomSpawnEvent);
-        PaperLib.teleportAsync(player, location.add(0.5, 0, 0.5));
+        player.teleportAsync(location.add(0.5, 0, 0.5));
         CooldownManager.addCooldown(player);
     }
 
@@ -139,6 +138,6 @@ public class CommandWild extends BaseCommand {
         if (location.isChunkLoaded()) {
             location.getChunk().load();
         }
-        PaperLib.teleportAsync(otherPlayer, location.add(0.5, 0, 0.5));
+        otherPlayer.teleportAsync(location.add(0.5, 0, 0.5));
     }
 }
